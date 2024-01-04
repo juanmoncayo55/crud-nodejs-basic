@@ -1,0 +1,33 @@
+extends layout.pug
+
+block content
+	section.container
+		h1.header= title
+		article.item
+			//- if(edit != true)
+			form.form(method="post", action="/")
+				fieldset
+					div
+						input(type="text", name="name_txt", placeholder="nombre", required)
+					div
+						input(type="text", name="twitter_txt", placeholder="twitter", required)
+					div
+						input(type="text", name="country_txt", placeholder="país", required)
+					div
+						input(type="text", name="side_txt", placeholder="equipo", required)
+					div
+						input.button.add(type="submit", value="Agregar")
+			//- else
+				form.form(method="post", action="/edit")
+					fieldset
+						div
+							input(type="text", name="name_txt", placeholder="nombre", value=data[0].name, required)
+						div
+							input(type="text", name="twitter_txt", placeholder="twitter", value=data[0].twitter, required)
+						div
+							input(type="text", name="country_txt", placeholder="país", value=data[0].country, required)
+						div
+							input(type="text", name="side_txt", placeholder="equipo", value=data[0].side, required)
+						div
+							input.button.add(type="submit", value="Editar")
+		a.button.show(href="/") Inicio
